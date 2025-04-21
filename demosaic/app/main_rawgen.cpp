@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     std::string outputRawFile = argv[2];
     std::string bayerPattern = argv[3];
 
-    // Load the input PNG image
+    // Load the input .PNG/.JPG/... image
     cv::Mat image = loadImage(inputFile);
     if (image.empty()) {
         return -1;
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     }
 
     // Save the Bayer image as a RAW file
-    if (!saveRawImage(outputRawFile, bayerImage)) {
+    if (!saveRawImage(outputRawFile, bayerImage, bayerPattern)) {
         return -1;
     }
 
