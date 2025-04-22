@@ -29,6 +29,15 @@ add_executable(main_loadraw
     src/bayer_pattern.cpp
 )
 
+# Add source files for main_demosaic
+add_executable(main_demosaic
+    app/main_demosaic.cpp
+    src/image_io.cpp
+    src/bayer_pattern.cpp
+    src/demosaic_engine.cpp
+)
+
 # Link OpenCV and LibRaw libraries
 target_link_libraries(main_rawgen ${OpenCV_LIBS} ${LIBRAW_LIBRARIES})
 target_link_libraries(main_loadraw ${OpenCV_LIBS} ${LIBRAW_LIBRARIES})
+target_link_libraries(main_demosaic ${OpenCV_LIBS} ${LIBRAW_LIBRARIES})

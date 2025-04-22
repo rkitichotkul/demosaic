@@ -117,7 +117,6 @@ cv::Mat loadRealRawImage(const std::string& filename, int& width, int& height, s
 
     // Get the maximum value of the raw data
     int maxValue = rawProcessor.imgdata.color.maximum;
-    std::cout << "Raw data value range: 0 to " << maxValue << "\n";
 
     // Create a CV_16UC1 Mat to store the Bayer data
     cv::Mat bayerImage16(height, width, CV_16UC1, rawData);
