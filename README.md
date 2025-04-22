@@ -1,6 +1,17 @@
 # demosaic
 
-Demosaic real and simulated RAW images in C++.
+Demosaic real and simulated RAW images in C++ for educational purposes.
+
+| **Simulated RAW image** | **Simulated demosaiced image** | **Zoom-in RGB mosaic** |
+| --- | --- | --- |
+| <img src="assets/plush_rggb.jpg" width="200"> | <img src="assets/plush_sim_demosaiced.jpg" width="200"> | <img src="assets/mosaic.jpg" width="200">
+
+
+| **Real RAW image** | **Real demosaiced image** |
+| --- | --- |
+| <img src="assets/plush_realraw_grayscale.jpg" width="200"> | <img src="assets/plush_real_demosaiced.jpg" width="200"> |
+
+The color of demosaiced real RAW images might seem wrong because we skipped many steps in the Image Signal Processing pipeline (black level subtraction, white balance, gamma correction, etc.).
 
 ## Features
 
@@ -50,8 +61,6 @@ Call the executables to see the required arguments. Here are some example usages
 ```bash
 ./main_demosaic real ../data/plush.RAF ../results/plush_real_demosaiced.png
 ```
-
-Note that the color of demosaiced real RAW images might look weird because we skipped many steps in the ISP (black level subtraction, white balance, gamma correction, etc.).
 
 **View and save real RAW as grayscale and mosaic RGB images**
 ```bash
