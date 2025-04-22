@@ -14,6 +14,18 @@ Demosaic real and simulated RAW images in C++.
 - **OpenCV**: For image processing. Tested on version 4.5.4.
 - **LibRaw**: For handling real RAW image files.
 
+## Building
+
+First, navigate to `build` and then build the project.
+
+```bash
+cd demosaic/build
+cmake ..
+make
+```
+
+Modify `CMakeLists.txt` accordingly if any file/library is added.
+
 ## Usage
 
 There are three executables in `demosaic/build`.
@@ -45,15 +57,3 @@ Note that the color of demosaiced real RAW images might look weird because we sk
 ```bash
 ./main_loadraw real ../data/plush.RAF ../results/plush_realraw
 ```
-
-## Building
-
-If you want to modify any code and rebuild the project, navigate to `build` and then build the project.
-
-```bash
-cd demosaic/build
-cmake ..
-make
-```
-
-Modify `CMakeLists.txt` accordingly if any file/library is added.
