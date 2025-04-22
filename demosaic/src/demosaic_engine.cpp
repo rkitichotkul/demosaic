@@ -2,7 +2,6 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
-// Function to perform demosaicing
 cv::Mat demosaic(const cv::Mat& bayerImage, const std::string& bayerPattern) {
     if (bayerImage.empty()) {
         std::cerr << "Input image is empty!" << std::endl;

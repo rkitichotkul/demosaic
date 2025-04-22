@@ -105,8 +105,26 @@ cv::Mat loadRealRawImage(const std::string& filename, int& width, int& height, s
     width = rawProcessor.imgdata.sizes.raw_width;
     height = rawProcessor.imgdata.sizes.raw_height;
 
-    // Get Bayer pattern
-    bayerPattern = "RGGB";  // Default Bayer pattern. TODO: Implement a way to get the actual Bayer pattern from LibRaw. Check int LibRaw::COLOR(int row, int col)
+    // Determine the Bayer pattern
+    auto normalizeColor = [](int color) { return (color == 3) ? 1 : color; };
+
+    int c00 = normalizeColor(rawProcessor.COLOR(0, 0)); // Top-left pixel
+    int c01 = normalizeColor(rawProcessor.COLOR(0, 1)); // Top-right pixel
+    int c10 = normalizeColor(rawProcessor.COLOR(1, 0)); // Bottom-left pixel
+    int c11 = normalizeColor(rawProcessor.COLOR(1, 1)); // Bottom-right pixel
+
+    if (c00 == 0 && c01 == 1 && c10 == 1 && c11 == 2) {
+        bayerPattern = "RGGB";
+    } else if (c00 == 2 && c01 == 1 && c10 == 1 && c11 == 0) {
+        bayerPattern = "BGGR";
+    } else if (c00 == 1 && c01 == 0 && c10 == 2 && c11 == 1) {
+        bayerPattern = "GRBG";
+    } else if (c00 == 1 && c01 == 2 && c10 == 0 && c11 == 1) {
+        bayerPattern = "GBRG";
+    } else {
+        std::cerr << "Unknown Bayer pattern.\n";
+        return cv::Mat();
+    }
 
     // Access the raw Bayer data
     ushort* rawData = rawProcessor.imgdata.rawdata.raw_image;

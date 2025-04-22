@@ -1,3 +1,14 @@
+/**
+ * @file main_demosaic.cpp
+ * @author Kao Kitichotkul
+ * @brief Main application for demosaicing a RAW image.
+ * @details This application takes a RAW image (simulated or real) and performs demosaicing
+ * @version 0.1
+ * @date 2025-04-22
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include "demosaic_engine.hpp"

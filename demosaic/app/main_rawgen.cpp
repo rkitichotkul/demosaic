@@ -1,3 +1,14 @@
+/**
+ * @file main_rawgen.cpp
+ * @author Kao Kitichotkul
+ * @brief Main application for generating RAW images from PNG/JPG files.
+ * @details This application takes a PNG/JPG image and generates a RAW Bayer image with metadata (width, height, and Bayer pattern). It also saves the grayscale and RGB images of the Bayer image.
+ * @version 0.1
+ * @date 2025-04-22
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "image_io.hpp"
 #include "bayer_pattern.hpp"
 #include <iostream>
@@ -29,7 +40,7 @@ int main(int argc, char** argv) {
     }
 
     // Save the Bayer image as a RAW file
-    if (!saveRawImage(outputRawFile, bayerImage, bayerPattern)) {
+    if (!saveRawImage(outputRawFile + ".raw", bayerImage, bayerPattern)) {
         return -1;
     }
 

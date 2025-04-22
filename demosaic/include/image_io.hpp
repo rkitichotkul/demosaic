@@ -13,7 +13,7 @@ bool saveGrayscaleImage(const std::string& filename, const cv::Mat& bayerImage);
 // Function to load an image from a file
 cv::Mat loadImage(const std::string& filename);
 
-// Function to load a RAW Bayer image with metadata
+// Function to load a simulated RAW Bayer image with metadata
 cv::Mat loadRawImage(const std::string& filename, int& width, int& height, std::string& bayerPattern);
 
 // Function to load a real RAW image using LibRaw

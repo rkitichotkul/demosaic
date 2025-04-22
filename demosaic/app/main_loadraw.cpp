@@ -1,3 +1,14 @@
+/**
+ * @file main_loadraw.cpp
+ * @author Kao Kitichotkul
+ * @brief Main application for loading RAW images.
+ * @details This application loads a RAW image (simulated or real) and display it. If save_name is provided, it saves the grayscale and RGB images of the Bayer image.
+ * @version 0.1
+ * @date 2025-04-22
+ * 
+ * @copyright Copyright (c) 2025
+ * 
+ */
 #include "image_io.hpp"
 #include "bayer_pattern.hpp"
 #include <iostream>
@@ -6,7 +17,7 @@ int main(int argc, char** argv) {
     if (argc < 3) {
         std::cerr << "Usage: " << argv[0] << " <mode> <raw_file> [save_name]\n";
         std::cerr << "Modes:\n";
-        std::cerr << "  custom - Load a custom RAW file with metadata (e.g., .raw)\n";
+        std::cerr << "  sim - Load a simulated RAW file with metadata (e.g., .raw)\n";
         std::cerr << "  real   - Load a real RAW image (e.g., .NEF, .RAF)\n";
         std::cerr << "Optional:\n";
         std::cerr << "  save_name - Base name to save grayscale and RGB images\n";
@@ -21,11 +32,11 @@ int main(int argc, char** argv) {
     std::string bayerPattern;
     cv::Mat bayerImage;
 
-    if (mode == "custom") {
-        // Load the custom RAW image
+    if (mode == "sim") {
+        // Load the simulated RAW image
         bayerImage = loadRawImage(rawFile, width, height, bayerPattern);
         if (bayerImage.empty()) {
-            std::cerr << "Failed to load custom RAW image.\n";
+            std::cerr << "Failed to load simulated RAW image.\n";
             return -1;
         }
     } else if (mode == "real") {
@@ -37,7 +48,7 @@ int main(int argc, char** argv) {
         }
     } else {
         std::cerr << "Invalid mode: " << mode << "\n";
-        std::cerr << "Valid modes are 'custom' or 'real'.\n";
+        std::cerr << "Valid modes are 'sim' or 'real'.\n";
         return -1;
     }
 
